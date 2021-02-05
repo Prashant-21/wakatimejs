@@ -19,14 +19,14 @@ export class WakaTime {
     }
   }
 
-  async currentUser () {
-//     console.log(this.getApiOptions('/users/current'))
+  const currentUser = async () => {
+    console.log(this.getApiOptions('/users/current'))
     const {url, headers} = this.getApiOptions('/users/current')
-//     console.log(url, headers)
+    console.log(url, headers)
     return (await axios.get(url, {headers})).data
   }
 
-  async stats (stat = 'last_7_days') {
+  const stats = async (stat = 'last_7_days') => {
     const validRanges = [
       'last_7_days',
       'last_30_days',
@@ -42,7 +42,7 @@ export class WakaTime {
 
   }
 
-  async summaries (object) {
+  const summaries = async (object) => {
     let start = ''
     let end = ''
 
@@ -62,7 +62,7 @@ export class WakaTime {
     return (await axios.get(url, {headers})).data
   }
 
-  async durations (date) {
+  const durations = async (date) => {
     const {url, headers} = this.getApiOptions('/users/current/durations', {
       date: getDateString(date)
     })
